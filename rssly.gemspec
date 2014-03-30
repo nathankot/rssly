@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "sanitize", "~> 2.1"
   spec.add_dependency "ots", "~> 0.5"
   spec.add_dependency "addressable", "~> 2.3"
+  spec.add_dependency "bloomfilter-rb", "~> 2.1"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
