@@ -8,7 +8,7 @@ module Rssly
   class Article
     class << self
       def create_from_feedjira_entry(entry)
-        new(title: entry.title, url: entry.url)
+        new(title: entry.title, url: entry.url, published: entry.published)
       end
     end
 
@@ -18,10 +18,12 @@ module Rssly
     attr_accessor :url
     attr_accessor :summary
     attr_accessor :topics
+    attr_accessor :published
 
-    def initialize(title: nil, url: nil)
+    def initialize(title: nil, url: nil, published: nil)
       self.title = title
       self.url = url
+      self.published = published
     end
 
     def title

@@ -23,6 +23,10 @@ describe 'Rssly::Article' do
       it 'should set the url' do
         expect(@article.url).to eq(@entry.url)
       end
+
+      it 'should set the publish date' do
+        expect(@article.published).to eq(@entry.published)
+      end
     end
   end
 
