@@ -1,5 +1,6 @@
 require 'rssly'
 require 'feedjira'
+require 'addressable/uri'
 
 describe 'Rssly::Article' do
 
@@ -28,6 +29,16 @@ describe 'Rssly::Article' do
   describe 'instance' do
     before do
       @article = Rssly::Article.new(url: ARTICLE_TEST_URL)
+    end
+
+    it 'should standardize the url' do
+      article = Rssly::Article.new url: 'http://notstandard.com/123123/?test=hello/'
+      expect(article.url).to eq('http://notstandard.com/123123/')
+    end
+
+    it 'should standardize a file url' do
+      article = Rssly::Article.new url: 'http://notstandard.com/123123.html?hello'
+      expect(article.url).to eq('http://notstandard.com/123123.html')
     end
 
     it 'should fetch the title if not given' do

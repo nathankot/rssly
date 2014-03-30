@@ -40,6 +40,11 @@ module Rssly
       @topics ||= summarized.topics
     end
 
+    def url=(url)
+      normalized = Addressable::URI.parse(url).normalize
+      @url = normalized.scheme + '://' + normalized.host + normalized.path
+    end
+
     private
 
     def summarized
