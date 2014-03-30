@@ -18,12 +18,12 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "feedbag"
-  spec.add_dependency "feedjira"
-  spec.add_dependency "ruby-readability"
-  spec.add_dependency "sanitize"
-  spec.add_dependency "ots"
-  spec.add_dependency "addressable"
+  spec.add_dependency "feedbag", "~> 0.9"
+  spec.add_dependency "feedjira", "~> 1.1"
+  spec.add_dependency "ruby-readability", "~> 0.6"
+  spec.add_dependency "sanitize", "~> 2.1"
+  spec.add_dependency "ots", "~> 0.5"
+  spec.add_dependency "addressable", "~> 2.3"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
