@@ -20,10 +20,18 @@ module Rssly
     attr_accessor :topics
     attr_accessor :published
 
-    def initialize(title: nil, url: nil, published: nil)
+    def initialize(
+      title: nil,
+      url: nil,
+      published: nil,
+      summary: nil,
+      topics: nil
+    )
       self.title = title
       self.url = url
       self.published = published
+      self.summary = summary
+      self.topics = topics
     end
 
     def title
