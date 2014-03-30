@@ -15,10 +15,16 @@ module Rssly
       self.title = title
     end
 
+    def articles
+      @articles ||= fetch_articles
+    end
+
+    private
+
     def fetch_articles
       result = Feedjira::Feed.fetch_and_parse @url
       self.title = result.title
-      self.articles = result.entries.map do |obj|
+      result.entries.map do |obj|
         Article.create_from_feedjira_entry(obj)
       end
     end

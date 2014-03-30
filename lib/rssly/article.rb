@@ -47,6 +47,10 @@ module Rssly
       @url = normalized.scheme + '://' + normalized.host + normalized.path
     end
 
+    def published
+      @published ||= Time.now
+    end
+
     private
 
     def summarized

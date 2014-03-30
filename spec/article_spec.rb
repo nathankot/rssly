@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'rssly'
 require 'feedjira'
 require 'addressable/uri'
@@ -11,9 +12,9 @@ describe 'Rssly::Article' do
   describe 'class' do
     describe '#create_from_feedjira_entry' do
       before do
-        @article = Rssly::Article.create_from_feedjira_entry(
-          @entry = Feedjira::Feed.fetch_and_parse(ARTICLE_TEST_FEED_URL).entries.first
-        )
+        @entry = Feedjira::Feed.fetch_and_parse(ARTICLE_TEST_FEED_URL).entries.first
+        allow(@entry).to receive(:published).and_return(Time.now)
+        @article = Rssly::Article.create_from_feedjira_entry @entry
       end
 
       it 'should set the title' do
@@ -51,6 +52,10 @@ describe 'Rssly::Article' do
 
     it 'should fetch the summary if not given' do
       expect(@article.summary).not_to eq(nil)
+    end
+
+    it 'should always have a published date' do
+      expect(@article.published).not_to eq(nil)
     end
   end
 end
