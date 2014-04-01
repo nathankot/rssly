@@ -4,5 +4,3 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'activesupport'
-
-Bundler.require
