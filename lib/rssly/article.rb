@@ -1,3 +1,4 @@
+require 'addressable'
 require 'readability'
 require 'open-uri'
 require 'sanitize'
