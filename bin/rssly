@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+# vim: set ft=ruby:
+require 'rssly/cli'
+Rssly::CLI.start

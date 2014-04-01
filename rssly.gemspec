@@ -8,10 +8,13 @@ Gem::Specification.new do |spec|
   spec.version       = Rssly::VERSION
   spec.authors       = ["Nathan Kot"]
   spec.email         = ["me@nathankot.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
   spec.homepage      = ""
   spec.license       = "MIT"
+  spec.description   = "Collect and serialize rss feeds."
+  spec.summary       = <<-EOT
+    Rssly is a tool to gather rssly feeds, filter and serialize them into 
+    various outputs.
+  EOT
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
@@ -25,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "ots", "~> 0.5"
   spec.add_dependency "addressable", "~> 2.3"
   spec.add_dependency "bloomfilter-rb", "~> 2.1"
+  spec.add_dependency "thor"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
