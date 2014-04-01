@@ -26,7 +26,7 @@ module Rssly
       EOT
 
       def perform
-        @collection.reduce('') do |response, article|
+        @collection.articles.reduce('') do |response, article|
           response + ARTICLE_TEMPLATE % {
             title: article.title,
             summary: article.summary,
