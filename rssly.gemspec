@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
   spec.description   = "Collect and serialize rss feeds."
   spec.summary       = <<-EOT
-    Rssly is a tool to gather rssly feeds, filter and serialize them into 
+    Rssly is a tool to gather rssly feeds, filter and serialize them into
     various outputs.
   EOT
 
