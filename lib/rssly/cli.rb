@@ -14,7 +14,12 @@ module Rssly
       `json` : Ouput articles with a json representation.
     EOT
 
+    option :summary_ratio, default: 50, desc: <<-EOT
+      Choose the summary ratio in a percentage.
+    EOT
+
     def fetch(*feed_urls)
+      Rssly::CONFIG[:summary_ratio] = options[:summary_ratio].to_i
       feeds = feed_urls.map { |url| Rssly::Feed.new url: url }
       collection = Rssly::Collection.create_from_feeds(*feeds)
       serializer = case options[:format]

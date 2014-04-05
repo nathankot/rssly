@@ -13,8 +13,6 @@ module Rssly
       end
     end
 
-    SUMMARY_RATIO = 35
-
     attr_accessor :title
     attr_accessor :url
     attr_accessor :summary
@@ -39,7 +37,7 @@ module Rssly
 
     def summary
       @summary ||= summarized.summarize(
-        percent: SUMMARY_RATIO
+        percent: Rssly::CONFIG[:summary_ratio]
       ).reduce('') do |text, o|
         text << o[:sentence].strip + ' '
       end.strip
