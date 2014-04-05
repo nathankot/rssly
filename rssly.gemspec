@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "bloomfilter-rb", "~> 2.1"
   spec.add_dependency "redis", "~> 3.0.7"
   spec.add_dependency "json", "~> 1.8.1"
+  spec.add_dependency 'open_uri_redirections', '~> 0.1.4'
   spec.add_dependency "thor"
 
   spec.add_development_dependency "bundler", "~> 1.3"

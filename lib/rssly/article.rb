@@ -1,6 +1,7 @@
 require 'addressable/uri'
 require 'readability'
 require 'open-uri'
+require 'open_uri_redirections'
 require 'sanitize'
 require 'ots'
 
@@ -75,7 +76,7 @@ module Rssly
     def extracted
       @extracted ||= begin
         $stderr.puts "Fetching article at #{url}" if Rssly::CONFIG[:verbose]
-        source = open(url).read
+        source = open(url, allow_redirections: :safe).read
         Readability::Document.new(source)
       end
     rescue OpenURI::HTTPError
