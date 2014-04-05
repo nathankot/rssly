@@ -1,3 +1,5 @@
+require 'json'
+
 module Rssly
   # Represents a collection of articles
   class Collection
@@ -32,6 +34,10 @@ module Rssly
 
     def filter(filter, **opts)
       self.articles = filter.parse(articles, **opts)
+    end
+
+    def to_json
+      JSON.generate(articles.map { |a| a.to_h })
     end
   end
 end

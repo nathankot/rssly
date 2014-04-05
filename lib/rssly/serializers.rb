@@ -52,5 +52,12 @@ module Rssly
       </article>
       EOT
     end
+
+    # Transforms a collection into a json representation
+    class JSON < Serializer
+      def perform
+        @collection.to_json
+      end
+    end
   end
 end

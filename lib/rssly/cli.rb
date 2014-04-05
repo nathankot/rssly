@@ -11,6 +11,7 @@ module Rssly
 
       `text` : Output articles in a simple text layout.
       `html` : Output articles in an html format.
+      `json` : Ouput articles with a json representation.
     EOT
 
     def fetch(*feed_urls)
@@ -23,6 +24,7 @@ module Rssly
       serializer = case options[:format]
                    when 'text' then Rssly::Serializers::Text
                    when 'html' then Rssly::Serializers::HTML
+                   when 'json' then Rssly::Serializers::JSON
                    else fail "Serializer #{options[:format]} not found."
                    end
 

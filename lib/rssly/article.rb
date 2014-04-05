@@ -21,13 +21,11 @@ module Rssly
     attr_accessor :topics
     attr_accessor :published
 
-    def initialize(
-      title: nil,
-      url: nil,
-      published: nil,
-      summary: nil,
-      topics: nil
-    )
+    def initialize(title: nil,
+                   url: nil,
+                   published: nil,
+                   summary: nil,
+                   topics: nil)
       self.title = title
       self.url = url
       self.published = published
@@ -58,6 +56,14 @@ module Rssly
 
     def published
       @published ||= Time.now
+    end
+
+    def to_h
+      { title: title,
+        url: url,
+        summary: summary,
+        topics: topics,
+        published: published }
     end
 
     private

@@ -1,4 +1,3 @@
-require 'active_support'
 require "rssly/version"
 require "rssly/article"
 require "rssly/feed"
