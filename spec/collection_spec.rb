@@ -38,10 +38,6 @@ describe 'Rssly::Collection' do
       @collection = Rssly::Collection.new(@articles)
     end
 
-    it 'should respond to #each' do
-      expect(@collection.respond_to?(:each)).to eq(true)
-    end
-
     it 'should respond to #length' do
       expect(@collection.length).to eq(3)
     end

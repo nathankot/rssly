@@ -15,12 +15,8 @@ module Rssly
     EOT
 
     def fetch(*feed_urls)
-      feeds = feed_urls.map do |url|
-        Rssly::Feed.new url: url
-      end
-
+      feeds = feed_urls.map { |url| Rssly::Feed.new url: url }
       collection = Rssly::Collection.create_from_feeds(*feeds)
-
       serializer = case options[:format]
                    when 'text' then Rssly::Serializers::Text
                    when 'html' then Rssly::Serializers::HTML

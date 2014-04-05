@@ -20,16 +20,24 @@ module Rssly
       self.articles = items
     end
 
-    def each(&block)
-      articles.each(&block)
-    end
-
     def length
       articles.length
     end
 
     def articles
       @articles ||= []
+
+      # Remove all the inaccessible ones
+      @articles.select! do |a|
+        begin
+          a.extracted
+          true
+        rescue Rssly::HTTPError
+          false
+        end
+      end
+
+      @articles
     end
 
     def filter(filter, **opts)

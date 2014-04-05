@@ -66,8 +66,6 @@ module Rssly
         published: published }
     end
 
-    private
-
     def summarized
       @summarized ||= begin
                         text = Sanitize.clean(extracted.content)
