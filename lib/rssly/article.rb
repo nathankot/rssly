@@ -80,6 +80,9 @@ module Rssly
                        source = open(url).read
                        Readability::Document.new(source)
                      end
+    rescue OpenURI::HTTPError
+      raise Rssly::HTTPError,
+            "Could not retrieve document for arcitle at: #{url}"
     end
   end
 end

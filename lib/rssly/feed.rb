@@ -27,6 +27,9 @@ module Rssly
       result.entries.map do |obj|
         Article.create_from_feedjira_entry(obj)
       end
+    rescue RuntimeError
+      raise Rssly::HTTPError,
+            "Could not fetch articles for feed: #{url}"
     end
   end
 end
