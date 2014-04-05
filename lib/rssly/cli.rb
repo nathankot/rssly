@@ -26,7 +26,6 @@ module Rssly
     def fetch(*feed_urls)
       Rssly::CONFIG[:summary_ratio] = options[:summary_ratio]
       Rssly::CONFIG[:discover_feeds] = options[:discover]
-
       feeds = feed_urls.map { |url| Rssly::Feed.new url: url }
       collection = Rssly::Collection.create_from_feeds(*feeds)
       serializer = case options[:format]
@@ -36,7 +35,7 @@ module Rssly
                    else fail "Serializer #{options[:format]} not found."
                    end
 
-      puts serializer.new(collection).perform
+      $stdout.puts serializer.new(collection).perform
     end
   end
 end
