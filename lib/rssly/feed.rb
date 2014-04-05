@@ -1,4 +1,5 @@
 require 'feedjira'
+require 'feedbag'
 
 module Rssly
   # Represents a single rss feed and it's metadata
@@ -22,7 +23,9 @@ module Rssly
     private
 
     def fetch_articles
-      result = Feedjira::Feed.fetch_and_parse @url
+      urls = [@url]
+      urls = Feedbag.find(@url) if Rssly::CONFIG[:discover_feeds]
+      result = Feedjira::Feed.fetch_and_parse(*urls)
       self.title = result.title
       result.entries.map do |obj|
         Article.create_from_feedjira_entry(obj)

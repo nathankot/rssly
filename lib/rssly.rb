@@ -11,6 +11,7 @@ require 'rssly/collection/age_filter'
 # Rssly namespace
 module Rssly
   CONFIG = {
-    summary_ratio: 35
+    summary_ratio: 35,
+    discover_feeds: false
   }
 end
