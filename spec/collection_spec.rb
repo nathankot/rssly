@@ -4,7 +4,7 @@ require 'active_support/core_ext'
 
 describe 'Rssly::Collection' do
 
-  COLLECTION_TEST_URL = 'news.ycombinator.com/rss'
+  COLLECTION_TEST_URL = 'https://news.ycombinator.com/rss'
   COLLECTION_ARTICLE_TEST_URL = \
     'http://blog.ycombinator.com/meet-the-people-taking-over-hacker-news'
 

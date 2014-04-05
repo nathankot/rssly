@@ -3,9 +3,10 @@ require 'rssly'
 
 describe 'Rssly::Feed' do
 
-  FEED_TEST_URL = 'news.ycombinator.com/rss'
+  FEED_TEST_URL = 'https://news.ycombinator.com/'
 
   before do
+    Rssly::CONFIG[:discover_feeds] = true
     @feed = Rssly::Feed.new(url: FEED_TEST_URL)
   end
 

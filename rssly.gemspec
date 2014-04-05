@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "feedbag", "~> 0.9"
+  spec.add_dependency "rfeedfinder", "~> 0.9"
   spec.add_dependency "feedjira", "~> 1.1"
   spec.add_dependency "ruby-readability", "~> 0.6"
   spec.add_dependency "sanitize", "~> 2.1"
