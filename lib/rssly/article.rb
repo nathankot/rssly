@@ -76,7 +76,7 @@ module Rssly
     def extracted
       @extracted ||= begin
         $stderr.puts "Fetching article at #{url}" if Rssly::CONFIG[:verbose]
-        source = open(url, allow_redirections: :safe).read
+        source = open(url, allow_redirections: :all).read
         Readability::Document.new(source)
       end
     rescue OpenURI::HTTPError
