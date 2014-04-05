@@ -66,19 +66,21 @@ module Rssly
 
     def summarized
       @summarized ||= begin
-                        text = Sanitize.clean(extracted.content)
-                        OTS.parse(text)
-                      end
+        $stderr.puts "Summarizing article at #{url}" if Rssly::CONFIG[:verbose]
+        text = Sanitize.clean(extracted.content)
+        OTS.parse(text)
+      end
     end
 
     def extracted
       @extracted ||= begin
-                       source = open(url).read
-                       Readability::Document.new(source)
-                     end
+        $stderr.puts "Fetching article at #{url}" if Rssly::CONFIG[:verbose]
+        source = open(url).read
+        Readability::Document.new(source)
+      end
     rescue OpenURI::HTTPError
       raise Rssly::HTTPError,
-            "Could not retrieve document for arcitle at: #{url}"
+            "Could not retrieve document for article at: #{url}"
     end
   end
 end

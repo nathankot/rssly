@@ -5,6 +5,10 @@ module Rssly
   class Collection
     class << self
       def create_from_feeds(*feeds)
+        if Rssly::CONFIG[:verbose]
+          $stderr.puts "Creating collection from #{feeds.map(&:url).join(', ')}" 
+        end
+
         instance = new(
           feeds.map { |f| f.articles }.flatten
         )

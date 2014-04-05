@@ -22,11 +22,15 @@ module Rssly
     private
 
     def fetch_articles
+      $stderr.puts "Gathering feeds for #{url}" if Rssly::CONFIG[:verbose]
+
       urls = if Rssly::CONFIG[:discover_feeds]
                ([@url] + Feedbag.find(@url) + Rfeedfinder.feeds(@url))
                 .flatten.uniq.compact
               else [@url]
               end
+
+      $stderr.puts "Found feed urls #{urls.join(', ')}" if Rssly::CONFIG[:verbose]
 
       Feedjira::Feed.fetch_and_parse(urls).values.select do |result|
         result.class.name.start_with?('Feedjira::')

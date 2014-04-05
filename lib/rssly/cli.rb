@@ -23,9 +23,13 @@ module Rssly
       Whether rss feed urls should be auto discovered from the given url.
     EOT
 
+    option :verbose, default: false, type: :boolean
+
     def fetch(*feed_urls)
       Rssly::CONFIG[:summary_ratio] = options[:summary_ratio]
       Rssly::CONFIG[:discover_feeds] = options[:discover]
+      Rssly::CONFIG[:verbose] = options[:verbose]
+
       feeds = feed_urls.map { |url| Rssly::Feed.new url: url }
       collection = Rssly::Collection.create_from_feeds(*feeds)
       serializer = case options[:format]
