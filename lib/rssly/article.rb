@@ -49,7 +49,7 @@ module Rssly
 
     def url=(url)
       normalized = Addressable::URI.parse(url).normalize
-      @url = normalized.scheme + '://' + normalized.host + normalized.path
+      @url = normalized.to_s
     end
 
     def published
