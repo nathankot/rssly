@@ -68,7 +68,7 @@ module Rssly
     def summarized
       @summarized ||= begin
         $stderr.puts "Summarizing article at #{url}" if Rssly::CONFIG[:verbose]
-        text = Sanitize.clean(extracted.content)
+        text = Sanitize.clean(extracted.content.force_encoding('utf-8'))
         OTS.parse(text)
       end
     end
