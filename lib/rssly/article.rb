@@ -2,7 +2,6 @@ require 'addressable/uri'
 require 'readability'
 require 'open-uri'
 require 'open_uri_redirections'
-require 'sanitize'
 require 'ots'
 
 module Rssly
