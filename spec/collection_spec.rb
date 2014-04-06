@@ -23,7 +23,7 @@ describe 'Rssly::Collection' do
       end
 
       it 'filters out duplicate articles' do
-        expect(@collection.length).to.be <= @feed_count
+        expect(@collection.length).to <= @feed_count
       end
     end
   end
