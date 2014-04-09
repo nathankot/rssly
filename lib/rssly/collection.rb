@@ -6,7 +6,9 @@ module Rssly
     class << self
       def create_from_feeds(*feeds)
         if Rssly::CONFIG[:verbose]
-          $stderr.puts "Creating collection from #{feeds.map(&:url).join(', ')}" 
+          $stderr.puts(
+            "Creating collection from #{feeds.map(&:url).join(', ')}"
+          )
         end
 
         instance = new(
@@ -36,7 +38,7 @@ module Rssly
         begin
           a.extracted
           true
-        rescue Rssly::HTTPError
+        rescue RuntimeError
           false
         end
       end
