@@ -38,7 +38,7 @@ module Rssly
         begin
           a.extracted
           true
-        rescue RuntimeError
+        rescue Rssly::HTTPError
           false
         end
       end
