@@ -1,6 +1,7 @@
 require 'feedjira'
 require 'feedbag'
 require 'rfeedfinder'
+require 'uri'
 
 module Rssly
   # Represents a single rss feed and it's metadata
@@ -39,7 +40,10 @@ module Rssly
 
       if Rssly::CONFIG[:discover_feeds]
         ([@url] + Feedbag.find(@url) + Rfeedfinder.feeds(@url))
-        .flatten.uniq.compact
+        .flatten.uniq.compact.select do |u|
+          # Restrict to matching hosts
+          URI.parse(u).host == URI.parse(url).host
+        end
       else [@url]
       end
     end

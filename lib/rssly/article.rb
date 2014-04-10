@@ -78,9 +78,10 @@ module Rssly
         source = open(url, allow_redirections: :all).read
         Readability::Document.new(source)
       end
-    rescue RuntimeError
-      raise Rssly::HTTPError,
-            "Could not retrieve document for article at: #{url}"
+    rescue
+      raise \
+      Rssly::HTTPError,
+      "Could not retrieve document for article at: #{url}"
     end
   end
 end
