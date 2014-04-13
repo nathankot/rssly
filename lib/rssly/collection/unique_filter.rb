@@ -5,7 +5,7 @@ module Rssly
     # Filters out any articles that have the same url in the set.
     module UniqueFilter
       def self.parse(articles, **args)
-        bf = BloomFilter::Redis.new(
+        bf = BloomFilter::Native.new(
           size: 10000
         )
 
